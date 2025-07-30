@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Task } from '../../models/task.model';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { TaskService } from '../../services/task.service';
 
 @Component({
   selector: 'app-tasks',
@@ -10,12 +11,13 @@ import { CommonModule } from '@angular/common';
   styleUrl: './tasks.component.scss'
 })
 export class TasksComponent {
-  tasks: Task[] = [
-    { id: 1, title: 'Learn Angular 19', description: 'Explore new features', completed: false },
-    { id: 2, title: 'Build Task Manager', description: 'Step by step', completed: true }
-  ];
+  tasks: Task[] = [];
   newTaskTitle = '';
   newTaskDescription = '';
+
+  constructor(private taskService: TaskService) {
+    this.taskService.tasks$.subscribe(tasks => this.tasks = tasks);
+  }
 
   addTask() {
     if (!this.newTaskTitle.trim()) return;
@@ -27,15 +29,16 @@ export class TasksComponent {
       completed: false
     };
 
-    this.tasks.push(newTask);
+    this.taskService.addTask(newTask);
     this.newTaskTitle = '';
     this.newTaskDescription = '';
   }
+
   toggleComplete(task: Task) {
-    task.completed = !task.completed;
+    this.taskService.toggleComplete(task.id);
   }
 
   deleteTask(taskId: number) {
-    this.tasks = this.tasks.filter(t=>t.id !== taskId);
+    this.taskService.deleteTask(taskId);
   }
 }
