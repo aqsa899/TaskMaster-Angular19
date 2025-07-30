@@ -1,0 +1,21 @@
+.task-form {
+    margin-bottom: 1rem;
+  }
+  
+  .task-form input {
+    margin-right: 0.5rem;
+    padding: 0.4rem;
+  }
+  
+  .task-list li {
+    background: #f1f1f1;
+    margin: 0.5rem 0;
+    padding: 1rem;
+    border-radius: 4px;
+  }
+  
+  .task-list li.completed {
+    text-decoration: line-through;
+    background-color: #d4edda;
+  }
+  
