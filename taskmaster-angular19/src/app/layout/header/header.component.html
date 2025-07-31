@@ -1,4 +1,11 @@
 <header class="header">
     <h1>📝  Angular 19 Task Manager</h1>
+    <button 
+    *ngIf="authService.isLoggedIn()" 
+    (click)="logout()" 
+    class="logout-button">
+    Logout
+  </button>
 </header>
+
   

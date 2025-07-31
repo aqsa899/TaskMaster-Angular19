@@ -6,6 +6,8 @@ import { Task } from '../models/task.model';
   providedIn: 'root'
 })
 export class TaskService {
+
+  constructor() { }
   private tasksSubject = new BehaviorSubject<Task[]>([
     { id: 1, title: 'Learn Angular 19', description: 'Explore new features', completed: false },
     { id: 2, title: 'Build Task Manager', description: 'Step by step', completed: true }

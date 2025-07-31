@@ -3,7 +3,7 @@ import { Task } from '../../models/task.model';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { TaskService } from '../../services/task.service';
-import { FilterTasksPipe } from '../../shared/filter-tasks.pipe';
+import { FilterTasksPipe } from '../../shared/pipes/filter-tasks.pipe';
 
 @Component({
   selector: 'app-tasks',
